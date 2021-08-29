@@ -1,23 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from 'react'
+
+import Article from './components/Article'
+import Navigation from './components/Navigation'
+import Sidebar from './components/Sidebar'
 
 function App() {
+
+  const [sidebarOpened, setSidebarOpened] = useState(window.innerWidth > 1000);
+
+  // Toggle sidebar open/close
+  const toggleSidebar = () => {
+    setSidebarOpened(!sidebarOpened)
+  }
+
+  useEffect(() => {
+    const sidebarToggleOnResize = () => setSidebarOpened(window.innerWidth > 1000);
+
+    window.addEventListener("resize", sidebarToggleOnResize);
+
+    return () => window.removeEventListener("resize", sidebarToggleOnResize);
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="h-full">
+      <Navigation onMenuToggle={toggleSidebar} />
+
+      <div className="flex flex-row h-full">
+        <Sidebar opened={sidebarOpened}/>
+        <Article title="Fluffy Rice" />
+      </div>
     </div>
   );
 }
