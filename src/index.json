@@ -1,0 +1,18 @@
+{
+    "categories": {
+        "type": ["vegetarian", "meat", "fish-and-seafood", "baking", "soups", "deserts"],
+        "cuisine": ["italian", "french", "asian", "indian", "bulgarian", "fast food"]
+    },
+    "articles": [
+        {
+            "id": "fluffy-rice",
+            "prettyName": "Fluffy White Rice",
+            "tags": ["vegetarian", "rice", "base recipe", "carbs"]
+        },
+        {
+            "id": "cashew-ice-cream",
+            "prettyName": "Cashew Ice Cream",
+            "tags": ["deserts", "ice cream", "vegan"]
+        }
+    ]
+}

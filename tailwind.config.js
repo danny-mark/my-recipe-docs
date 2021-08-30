@@ -6,7 +6,17 @@ module.exports = {
       serif: ['Belleza', 'sans-serif'],
       sans: ['Lato', 'sans-serif'],
     },
-    extend: {},
+    extend: {
+      typography: (theme) => ({
+        DEFAULT: {
+          css: {
+            table: {
+              width: 'auto',
+            },
+          },
+        },
+      })
+    },
   },
   variants: {
     extend: {},

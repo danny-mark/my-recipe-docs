@@ -1,36 +1,76 @@
-import { useState, useEffect } from 'react'
-
+import { useState, useEffect, useRef } from 'react'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Article from './components/Article'
 import Navigation from './components/Navigation'
+import CategoriesPage from './components/pages/CategoriesPage'
+import TagPage from './components/pages/TagPage'
 import Sidebar from './components/Sidebar'
+import indexJSON from './index.json'
 
 function App() {
 
-  const [sidebarOpened, setSidebarOpened] = useState(window.innerWidth > 1000);
-
-  // Toggle sidebar open/close
-  const toggleSidebar = () => {
-    setSidebarOpened(!sidebarOpened)
-  }
+  const [categories, setCategories] = useState({});
+  const [articles, setArticles] = useState({});
 
   useEffect(() => {
-    const sidebarToggleOnResize = () => setSidebarOpened(window.innerWidth > 1000);
+    // Populate the articles object using the recipes index.json.
+    setCategories(indexJSON.categories);
+    setArticles(indexJSON.articles);
+  }, []);
+
+
+  // UI 
+  const sidebarRef = useRef();
+  const [sidebar, setSidebar] = useState({
+    sidebarRef: sidebarRef,
+    rendered: false,
+    opened: window.innerWidth > 1000
+  });
+
+  useEffect(() => {
+    const sidebarToggleOnResize = () => setSidebar(s => ({...s, opened: window.innerWidth > 1000}));
 
     window.addEventListener("resize", sidebarToggleOnResize);
-
     return () => window.removeEventListener("resize", sidebarToggleOnResize);
   }, []);
 
-  return (
+  return (<Router>
     <div className="h-full">
-      <Navigation onMenuToggle={toggleSidebar} />
+      <Navigation sidebar={sidebar} setSidebar={setSidebar} />
 
-      <div className="flex flex-row h-full">
-        <Sidebar opened={sidebarOpened}/>
-        <Article title="Fluffy Rice" />
-      </div>
+      <Route path="/"
+        exact
+        render={(props) => (
+          <CategoriesPage {...props} categories={categories} />
+        )}
+      />
+
+      <Route path="/tags/:tag/"
+        exact
+        render={(props) => (
+          <TagPage {...props} />
+        )}
+      />
+
+      <Route path="/recipes/:articleID/"
+        exact
+        render={(props) => (
+          <>
+          { articles.length ? (
+              <div className="flex flex-row h-full">
+                <Sidebar sidebar={sidebar} setSidebar={setSidebar} articles={articles} />
+                <Article articles={articles} />
+              </div>
+            ) : (
+              <p>Loading</p>
+            )
+          }
+          </>
+        )}
+      />
+
     </div>
-  );
+  </Router>)
 }
 
 export default App;

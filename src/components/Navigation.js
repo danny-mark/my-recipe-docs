@@ -1,12 +1,21 @@
 import PropTypes from 'prop-types'
+import { Link } from "react-router-dom";
 
-const Navigation = ({onMenuToggle}) => {
+const Navigation = ({sidebar, setSidebar}) => {
+
+  // Toggle sidebar open/close
+  const toggleSidebar = () => {
+    setSidebar({...sidebar, opened: !sidebar.opened})
+  }
+
   return (
     <div className="navbar shadow-lg bg-neutral text-neutral-content">
 
       <div className="flex-1 px-2 mx-2">
-        <span className="material-icons-outlined text-3xl mr-2">food_bank</span>
-        <span className="text-xl font-bold font-serif">{process.env.REACT_APP_NAME}</span>
+        <Link to="/" className="flex items-center	">
+          <span className="material-icons-outlined text-3xl mr-2">food_bank</span>
+          <span className="text-xl font-bold font-serif">{process.env.REACT_APP_NAME}</span>
+        </Link>
       </div>
 
       <div className="flex-none hidden px-2 mx-2 lg:flex">
@@ -20,17 +29,20 @@ const Navigation = ({onMenuToggle}) => {
         </div>
       </div>
 
-      <div className="flex-none">
-        <button className="btn btn-square btn-ghost" onClick={onMenuToggle}>
-          <span className="material-icons-outlined text-2xl">menu</span>
-        </button>
-      </div>
+      { sidebar.rendered && 
+        (<div className="flex-none">
+          <button className="btn btn-square btn-ghost" onClick={toggleSidebar}>
+            <span className="material-icons-outlined text-2xl">menu</span>
+          </button>
+        </div>)
+      }
     </div>
   )
 }
 
 Navigation.propTypes = {
-  onMenuToggle: PropTypes.func.isRequired
+  sidebar: PropTypes.object.isRequired,
+  setSidebar: PropTypes.func.isRequired
 }
 
 export default Navigation
