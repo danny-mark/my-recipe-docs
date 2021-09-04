@@ -20,10 +20,10 @@ const Navigation = ({sidebar, setSidebar}) => {
 
       <div className="flex-none hidden px-2 mx-2 lg:flex">
         <div className="flex items-stretch">
-          <a className="btn btn-ghost btn-sm rounded-btn" href="#asd">
+          <Link to="/" className="btn btn-ghost btn-sm rounded-btn">
             <span className="material-icons-outlined text-lg mr-2">category</span> Browse Categories
-          </a>
-          <a className="btn btn-ghost btn-sm rounded-btn" href="#asd">
+          </Link>
+          <a href="#asd" className="btn btn-ghost btn-sm rounded-btn">
             <span className="material-icons-outlined text-lg mr-2">search</span> Search
           </a>
         </div>

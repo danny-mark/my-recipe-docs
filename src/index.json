@@ -1,6 +1,6 @@
 {
     "categories": {
-        "type": ["vegetarian", "meat", "fish-and-seafood", "baking", "soups", "deserts"],
+        "category": ["vegetarian", "meat", "fish-and-seafood", "baking", "soups", "deserts"],
         "cuisine": ["italian", "french", "asian", "indian", "bulgarian", "fast food"]
     },
     "articles": [

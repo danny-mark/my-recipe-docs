@@ -2,15 +2,15 @@ import { useState, useEffect, useRef } from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Article from './components/Article'
 import Navigation from './components/Navigation'
-import CategoriesPage from './components/pages/CategoriesPage'
-import TagPage from './components/pages/TagPage'
+import CategoriesIndex from './components/pages/CategoriesIndex'
+import CategoriesShow from './components/pages/CategoriesShow'
 import Sidebar from './components/Sidebar'
 import indexJSON from './index.json'
 
 function App() {
 
   const [categories, setCategories] = useState({});
-  const [articles, setArticles] = useState({});
+  const [articles, setArticles] = useState([]);
 
   useEffect(() => {
     // Populate the articles object using the recipes index.json.
@@ -41,14 +41,14 @@ function App() {
       <Route path="/"
         exact
         render={(props) => (
-          <CategoriesPage {...props} categories={categories} />
+          <CategoriesIndex {...props} categories={categories} articles={articles} />
         )}
       />
 
-      <Route path="/tags/:tag/"
+      <Route path="/categories/:category/"
         exact
         render={(props) => (
-          <TagPage {...props} />
+          <CategoriesShow {...props} articles={articles} />
         )}
       />
 

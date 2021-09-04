@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import { useParams } from "react-router-dom";
+import { useParams } from "react-router-dom"
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
+import Tag from './Tag'
 
 const Article = ({ articles }) => {
 
   let { articleID } = useParams();
+  const [activeArticle, setActiveArticle] = useState({});
   const [articleContent, setArticleContent] = useState('');
 
   useEffect(() => {
@@ -15,27 +17,47 @@ const Article = ({ articles }) => {
       return articles.find(a => a.id === articleID);
     }
 
+    setActiveArticle(getArticleByID(articleID));
+  }, [articles, articleID]);
+
+  useEffect(() => {
+
     const fetchActiveArticleContent = async () => {
-      
-      let article = getArticleByID(articleID);
-      if (!article) {
+
+      let article = activeArticle;
+      if (!article.id) {
         setArticleContent('Ooops, article not found.');
         return;
       };
 
-      const res = await fetch(`/recipes/${articleID}/${articleID}.md`);
+      const res = await fetch(`/recipes/${article.id}/${article.id}.md`);
       const content = await res.text();
 
       setArticleContent(content);
     }
 
     fetchActiveArticleContent();
-  }, [articles, articleID]);
+  }, [activeArticle]);
 
   return (
-    <div className="prose max-w-full flex-shrink p-16">
+    <div className="max-w-full flex-shrink p-16">
+
       {articleContent.length ? (
-        <ReactMarkdown children={articleContent} remarkPlugins={[remarkGfm]} />
+        <div>
+
+          { activeArticle.tags.length && (
+            <div className="flex mb-8">
+              { activeArticle.tags.map(tag => (
+                <Tag key={tag} tag={tag} />
+              ))}
+            </div>
+          )}
+
+          <div className="prose">
+            <ReactMarkdown children={articleContent} remarkPlugins={[remarkGfm]} />
+          </div>
+
+        </div>
       ) : (
         <p>Loading</p>
       )}
