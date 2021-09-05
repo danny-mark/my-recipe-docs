@@ -8,21 +8,22 @@ const Sidebar = ({ sidebar, setSidebar, articles }) => {
 
   useEffect(() => {
     setSidebar(s => ({...s, rendered: !!s.sidebarRef.current}))
+
+    return () => {
+      setSidebar(s => ({...s, rendered: false}));
+    };
   }, [setSidebar]);
 
   return (
-    <div ref={sidebar.sidebarRef} className={`drawer ${sidebar.opened ? '' : 'hidden'} h-full w-60 flex-shrink-0 shadow bg-base-200`}>
+    <div ref={sidebar.sidebarRef} className={`drawer ${sidebar.opened ? '' : 'hidden'} w-60 xl:w-72 flex-shrink-0 shadow bg-white overflow-y-scroll z-50 absolute top-16 bottom-0 md:relative md:top-auto md:bottom-auto`}>
       <div className="drawer-side">
-        <ul className="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
+
+        <ul className="pt-2">
 
           { articles.map(article => (
-            <li key={article.id}>
-              <Link 
-                to={`/recipes/${article.id}/`}
-                className={ article.id === articleID ? 'bg-purple-600' : '' }
-              >
-                {article.prettyName}
-              </Link>
+            <li key={article.id} 
+              className={`px-4 py-2 ${article.id === articleID ? 'font-bold text-purple-600' : ''} hover:text-purple-600`}>
+              <Link to={`/recipes/${article.id}/`} >{article.prettyName}</Link>
             </li>
           ))}
         </ul>

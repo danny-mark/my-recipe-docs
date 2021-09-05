@@ -13,6 +13,15 @@ module.exports = {
             table: {
               width: 'auto',
             },
+            ol: {
+              'margin-top': '.8em',
+              'margin-bottom': '.8em',
+            },
+            ul: {
+              'margin-top': '.4em',
+              'margin-bottom': '.4em',
+              ' > li': { 'margin-left': '10px' }
+            },
           },
         },
       })

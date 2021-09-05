@@ -35,7 +35,7 @@ function App() {
   }, []);
 
   return (<Router>
-    <div className="h-full">
+    <div className="h-full pt-16">
       <Navigation sidebar={sidebar} setSidebar={setSidebar} />
 
       <Route path="/"
@@ -55,17 +55,17 @@ function App() {
       <Route path="/recipes/:articleID/"
         exact
         render={(props) => (
-          <>
+          <div className="flex flex-row h-full">
           { articles.length ? (
-              <div className="flex flex-row h-full">
-                <Sidebar sidebar={sidebar} setSidebar={setSidebar} articles={articles} />
-                <Article articles={articles} />
-              </div>
+            <>
+              <Sidebar sidebar={sidebar} setSidebar={setSidebar} articles={articles} />
+              <Article articles={articles} />
+            </>
             ) : (
-              <p>Loading</p>
+            <p>Loading</p>
             )
           }
-          </>
+          </div>
         )}
       />
 

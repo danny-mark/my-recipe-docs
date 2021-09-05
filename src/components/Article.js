@@ -21,6 +21,10 @@ const Article = ({ articles }) => {
   }, [articles, articleID]);
 
   useEffect(() => {
+    document.title = activeArticle.prettyName;
+  }, [activeArticle]);
+
+  useEffect(() => {
 
     const fetchActiveArticleContent = async () => {
 
@@ -40,7 +44,7 @@ const Article = ({ articles }) => {
   }, [activeArticle]);
 
   return (
-    <div className="max-w-full flex-shrink p-16">
+    <div className="w-full flex-shrink p-16 overflow-y-scroll">
 
       {articleContent.length ? (
         <div>
@@ -53,7 +57,7 @@ const Article = ({ articles }) => {
             </div>
           )}
 
-          <div className="prose">
+          <div className="prose max-w-full mb-16">
             <ReactMarkdown children={articleContent} remarkPlugins={[remarkGfm]} />
           </div>
 

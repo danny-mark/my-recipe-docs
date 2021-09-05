@@ -9,23 +9,26 @@ const Navigation = ({sidebar, setSidebar}) => {
   }
 
   return (
-    <div className="navbar shadow-lg bg-neutral text-neutral-content">
+    <div className="navbar fixed top-0 left-0 w-full shadow-lg bg-neutral text-neutral-content">
 
       <div className="flex-1 px-2 mx-2">
-        <Link to="/" className="flex items-center	">
+        <Link to="/" className="flex items-center	" title={process.env.REACT_APP_NAME}>
           <span className="material-icons-outlined text-3xl mr-2">food_bank</span>
-          <span className="text-xl font-bold font-serif">{process.env.REACT_APP_NAME}</span>
+          <span className="text-xl font-bold font-serif hidden sm:inline">{process.env.REACT_APP_NAME}</span>
         </Link>
       </div>
 
-      <div className="flex-none hidden px-2 mx-2 lg:flex">
+      <div className="flex-none">
         <div className="flex items-stretch">
-          <Link to="/" className="btn btn-ghost btn-sm rounded-btn">
+          <Link to="/" className="btn btn-ghost btn-sm rounded-btn hidden md:flex">
             <span className="material-icons-outlined text-lg mr-2">category</span> Browse Categories
           </Link>
-          <a href="#asd" className="btn btn-ghost btn-sm rounded-btn">
-            <span className="material-icons-outlined text-lg mr-2">search</span> Search
-          </a>
+
+          <label className="flex items-center btn btn-ghost btn-sm rounded-btn">
+            <span className="material-icons-outlined text-lg mr-2">search</span> 
+            <input type="text" placeholder="SEARCH" className="bg-transparent text-md font-semibold placeholder-white outline-none"/>
+          </label>
+
         </div>
       </div>
 

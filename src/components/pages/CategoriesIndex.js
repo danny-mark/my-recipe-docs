@@ -1,7 +1,12 @@
 import PropTypes from 'prop-types'
 import CategoryPreview from '../CategoryPreview';
+import { useEffect } from 'react'
 
 const CategoriesIndex = ({ categories, articles }) => {
+
+  useEffect(() => {
+    document.title = process.env.REACT_APP_NAME;
+  }, []);
 
   const getFirstArticleInCategory = (category) => {
     return articles.find(article => article.tags.includes(category));
@@ -13,7 +18,7 @@ const CategoriesIndex = ({ categories, articles }) => {
 
       <div key={categoryGroup} className="mb-24">
         <h4 className="text-3xl font-bold capitalize mb-8" >{categoryGroup}</h4>
-        <div className="grid grid-flow-row grid-cols-4 gap-4">
+        <div className="grid grid-flow-row gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-6 ">
           {categories[categoryGroup].map(category => (
             <CategoryPreview 
               key={category} 
