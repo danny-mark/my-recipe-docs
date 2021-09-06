@@ -1,4 +1,3 @@
-## Fluffy White Rice
 ### Simple recipe for making stovetop white rice. Used as a side dish or as the base for other recipes like [Stir Fry](#) or [Fresh Yellow Rice](#).
 
 &nbsp;

@@ -1,4 +1,3 @@
-## Cashew Ice Cream
 ### Almost vegan ice cream that stays soft in the freezer without turning into an ice block.
 
 &nbsp;

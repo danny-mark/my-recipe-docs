@@ -1,4 +1,3 @@
-## Subway Style Buns
 ### Sourdough-based white bread buns for sandwiches.
 
 &nbsp;
@@ -25,14 +24,13 @@ Salt | 10g
 3. Add the flour, form into a ball and knead for 5-10 minutes or until smooth.
   * Cover work surface in flour before kneading. Add more flour if too sticky.
 4. Clean mixing bowl, oil lightly and transfer kneaded dough back in. Let rise for 1 hour.
-5. Divide dough into 6 equal portions. Use a scale - each section should be about 200g.
+5. Divide dough into 5 equal portions. Use a scale - each section should be about 250g.
 6. Shape:
   * Form into balls and rest for 5 minutes.
-  * Roll out ball into cylinder.
-  * Push down cylinder, flattening it out into rough rectangle.
+  * Stretch ball into a rectangle.
   * Grab edge of rectangle and roll inward lengthwise.
-  * Push down again, forming the final rectangle shape.
-7. Place rectangles inside parchment-paper lined baking sheet. They should touch to one another.
+  * Push down, forming a rectangle again.
+7. Place rectangles inside parchment-paper lined baking sheet. They should touch one another.
 8. Cover with another baking sheet and let rise, either overnight in the fridge or in a warm place for 3-4 hours.
 
 #### Baking:
