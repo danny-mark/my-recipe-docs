@@ -2,6 +2,7 @@
   "name": "my-food-docs",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://danny-mark.github.io/my-recipe-docs/",
   "dependencies": {
     "@craco/craco": "^6.2.0",
     "@tailwindcss/typography": "^0.4.1",
@@ -9,6 +10,7 @@
     "@testing-library/react": "^11.2.6",
     "@testing-library/user-event": "^12.8.3",
     "daisyui": "^1.14.0",
+    "gh-pages": "^3.2.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-markdown": "^7.0.1",
@@ -21,7 +23,9 @@
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [

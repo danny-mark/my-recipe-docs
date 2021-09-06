@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { HashRouter as Router, Route } from 'react-router-dom'
 import Article from './components/Article'
 import Navigation from './components/Navigation'
 import CategoriesIndex from './components/pages/CategoriesIndex'
@@ -38,7 +38,7 @@ function App() {
     return () => window.removeEventListener("resize", resetSidebar);
   }, []);
 
-  return (<Router>
+  return (<Router  basename='/'>
     <div className="h-full pt-16">
       <Navigation sidebar={sidebar} setSidebar={setSidebar} />
 

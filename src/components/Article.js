@@ -34,7 +34,7 @@ const Article = ({ articles }) => {
         return;
       };
 
-      const res = await fetch(`/recipes/${article.id}/${article.id}.md`);
+      const res = await fetch(`${process.env.PUBLIC_URL}/recipes/${article.id}/${article.id}.md`);
       const content = await res.text();
 
       setArticleContent(content);
@@ -44,19 +44,20 @@ const Article = ({ articles }) => {
   }, [activeArticle]);
 
   return (
-    <div className="w-full flex-shrink p-6 md:p-12 lg:p-16 overflow-y-scroll">
+    <div className="w-full flex-shrink p-6 md:p-10 lg:p-12 overflow-y-scroll">
 
       {articleContent.length ? (
         <div>
 
           { activeArticle.tags.length && (
-            <div className="flex mb-8">
+            <div className="flex mb-12">
               { activeArticle.tags.map(tag => (
                 <Tag key={tag} tag={tag} />
               ))}
             </div>
           )}
 
+          <h1 className="text-4xl font-bold mb-6">{activeArticle.prettyName}</h1>
           <div className="prose max-w-full mb-16">
             <ReactMarkdown children={articleContent} remarkPlugins={[remarkGfm]} />
           </div>

@@ -18,7 +18,7 @@ const Sidebar = ({ sidebar, setSidebar, articles }) => {
     <div ref={sidebar.sidebarRef} className={`drawer ${sidebar.opened ? '' : 'hidden'} w-60 xl:w-72 flex-shrink-0 shadow bg-white overflow-y-scroll z-50 absolute top-16 bottom-0 md:relative md:top-auto md:bottom-auto`}>
       <div className="drawer-side">
 
-        <ul className="pt-6">
+        <ul className="pt-6 lg:pt-8">
 
           { articles.map(article => (
             <li key={article.id} 
