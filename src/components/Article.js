@@ -44,7 +44,7 @@ const Article = ({ articles }) => {
   }, [activeArticle]);
 
   return (
-    <div className="w-full flex-shrink p-16 overflow-y-scroll">
+    <div className="w-full flex-shrink p-6 md:p-12 lg:p-16 overflow-y-scroll">
 
       {articleContent.length ? (
         <div>
